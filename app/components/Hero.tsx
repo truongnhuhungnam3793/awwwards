@@ -1,3 +1,5 @@
+import { useGSAP } from "@gsap/react"
+import gsap from "gsap"
 import { useRef, useState } from "react"
 import { TiLocationArrow } from "react-icons/ti"
 import Button from "~/components/Button"
@@ -10,7 +12,7 @@ const Hero = () => {
   const [loadedVideos, setLoadedVideos] = useState(0)
 
   const totalVideos = 4
-  const nextVideoRef = useRef(null)
+  const nextVideoRef = useRef<HTMLVideoElement | null>(null)
 
   const handleVideoLoad = () => {
     setLoadedVideos((prev) => prev + 1)
@@ -22,6 +24,36 @@ const Hero = () => {
     setHasClicked(true)
     setCurrentIndex(upcomingVideoIndex)
   }
+
+  useGSAP(
+    () => {
+      if (hasClicked) {
+        gsap.set("#next-video", {
+          visibility: "visible",
+        })
+
+        gsap.to("#next-video", {
+          transformOrigin: "center center",
+          scale: 1,
+          width: "100%",
+          height: "100%",
+          duration: 1,
+          ease: "power1.inOut",
+          onStart: () => {
+            void nextVideoRef.current?.play()
+          },
+        })
+
+        gsap.from("#current-video", {
+          transformOrigin: "center center",
+          scale: 0,
+          duration: 1.5,
+          ease: "power1.inOut",
+        })
+      }
+    },
+    { dependencies: [currentIndex], revertOnUpdate: true }
+  )
 
   const getVideoSrc = (index: number) => `/videos/hero-${index}.mp4`
 
@@ -90,6 +122,9 @@ const Hero = () => {
           </div>
         </div>
       </div>
+      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black">
+        G<b>A</b>MING
+      </h1>
     </div>
   )
 }
