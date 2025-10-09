@@ -2,6 +2,7 @@ import About from "~/components/About"
 import Features from "~/components/Features"
 import Hero from "~/components/Hero"
 import Navbar from "~/components/Navbar"
+import Story from "~/components/Story"
 import type { Route } from "./+types/home"
 
 export function meta({}: Route.MetaArgs) {
@@ -18,6 +19,7 @@ export default function Home() {
       <Hero />
       <About />
       <Features />
+      <Story />
     </main>
   )
 }
