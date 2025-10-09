@@ -46,7 +46,7 @@ const Story = () => {
   }
 
   return (
-    <section id="story" className="min-h-dvh w-screen bg-black text-blue-50">
+    <section id="story" className="bg-black text-blue-50">
       <div className="container mx-auto">
         <div className="flex size-full flex-col items-center py-10 pb-24">
           <p className="font-general text-sm uppercase md:text-[10px]">
@@ -59,7 +59,7 @@ const Story = () => {
               containerClass="mt-5 pointer-events-none mix-blend-difference relative z-10"
             />
 
-            <BentoTilt className="relative w-[50vw] mx-auto -mt-20">
+            <BentoTilt className="relative md:w-[50vw] w-[calc(100%-1.5rem)] mx-auto -mt-20">
               <img
                 ref={frameRef}
                 onMouseMove={handleMouseMove}
