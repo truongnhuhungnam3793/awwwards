@@ -6,6 +6,7 @@ import Hero from "~/components/Hero"
 import Navbar from "~/components/Navbar"
 import Story from "~/components/Story"
 import type { Route } from "./+types/home"
+import ReactLenis from "lenis/react"
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -16,14 +17,17 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen w-screen overflow-x-hidden">
-      <Navbar />
-      <Hero />
-      <About />
-      <Features />
-      <Story />
-      <Contact />
-      <Footer />
-    </main>
+    <>
+      <ReactLenis root />
+      <main className="relative min-h-screen w-screen overflow-x-hidden">
+        <Navbar />
+        <Hero />
+        <About />
+        <Features />
+        <Story />
+        <Contact />
+        <Footer />
+      </main>
+    </>
   )
 }
