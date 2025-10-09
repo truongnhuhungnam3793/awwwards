@@ -127,12 +127,12 @@ body {
   }
 
   .story-img-container {
-    @apply relative h-dvh w-full;
+    @apply relative 2xl:h-[70vh] md:h-[50vh] h-dvh w-full;
     filter: url("#flt_tag");
   }
 
   .story-img-mask {
-    @apply absolute left-0 top-0 overflow-hidden md:left-[25vw] md:size-4/5 2xl:size-3/5 size-full;
+    @apply absolute left-0 top-0 overflow-hidden md:left-[25vw] h-dvh w-[60vw];
     clip-path: polygon(4% 0, 83% 21%, 100% 73%, 0% 100%);
   }
 
